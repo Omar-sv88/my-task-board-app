@@ -10,8 +10,10 @@ function Dashboard() {
         </header>
 
         <main className="flex flex-col gap-4 mt-4">
-          <Task />
-          <Task />
+          <Task variant="in_progress" />
+          <Task variant="completed" />
+          <Task variant="wont_do" />
+          <Task variant="to_do" />
           <Task />
         </main>
       </section>
