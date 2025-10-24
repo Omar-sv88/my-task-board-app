@@ -9,7 +9,11 @@
 ```bash
 pnpm install
 ```
-4. Start dev server.
+4. Load DB container.
+```bash
+docker compose up -d
+```
+5. Start dev server.
 ```bash
 pnpm start:dev
 ```
