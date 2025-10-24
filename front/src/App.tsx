@@ -1,7 +1,12 @@
+import BaseLayout from "./layouts/BaseLayout";
+import Dashboard from "./views/Dashboard";
+
 function App() {
   return (
     <>
-      <h1>My task board app</h1>
+      <BaseLayout>
+        <Dashboard />
+      </BaseLayout>
     </>
   );
 }
