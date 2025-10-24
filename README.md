@@ -24,11 +24,4 @@ Application that allows you to create, organize, and manage tasks visually throu
 
 ### Backend
 - 🚀 NestJS
-- 🍃 MongoDB
-- 🔗 Mongoose
-
-## 📋 Prerequisites
-
-- 📦 Node.js (v18 or higher)
-- 🍃 MongoDB (local or Atlas)
-- 📦 npm or yarn
+- ⛁ PostgreSQL
