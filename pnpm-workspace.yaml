@@ -1,2 +1,7 @@
 packages:
-  - "back"
+  - back
+  - front
+
+onlyBuiltDependencies:
+  - '@swc/core'
+  - esbuild

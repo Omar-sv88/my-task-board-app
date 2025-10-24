@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Omar-sv88/my-task-board-app#readme",
   "dependencies": {
-    "my-task-board-app-back": "workspace:*"
+    "my-task-board-app-back": "workspace:*",
+    "my-task-board-app-front": "workspace:*"
   }
 }
