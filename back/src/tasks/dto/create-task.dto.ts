@@ -1,6 +1,9 @@
-import { IsIn, IsOptional, IsString, MinLength } from 'class-validator';
+import { IsIn, IsOptional, IsString, IsUUID, MinLength } from 'class-validator';
 
 export class CreateTaskDto {
+  @IsUUID()
+  boardId: string;
+
   @IsString()
   @IsOptional()
   description?: string;

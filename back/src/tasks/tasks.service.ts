@@ -18,7 +18,14 @@ export class TasksService {
 
   async create(createTaskDto: CreateTaskDto) {
     try {
-      const task = this.taskRepository.create(createTaskDto);
+      const { boardId, ...taskData } = createTaskDto;
+
+      const task = this.taskRepository.create({
+        ...taskData,
+        board: {
+          id: boardId,
+        },
+      });
 
       return await this.taskRepository.save(task);
     } catch (error) {
@@ -36,8 +43,21 @@ export class TasksService {
     return task;
   }
 
-  update(id: string, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
+  async update(id: string, updateTaskDto: UpdateTaskDto) {
+    const task = await this.findOne(id);
+
+    try {
+      const { boardId, ...taskData } = updateTaskDto;
+
+      await this.taskRepository.update(id, taskData);
+
+      return {
+        ...task,
+        ...taskData,
+      };
+    } catch (error) {
+      HandleExceptions.check(error);
+    }
   }
 
   async remove(id: string) {
