@@ -36,8 +36,20 @@ export class BoardsService {
     return board;
   }
 
-  update(id: string, updateBoardDto: UpdateBoardDto) {
-    return `This action updates a #${id} board`;
+  async update(id: string, updateBoardDto: UpdateBoardDto) {
+    const board = await this.findOne(id);
+
+    try {
+      await this.boardRepository.update(id, updateBoardDto);
+
+      return {
+        ...board,
+        ...updateBoardDto,
+        id,
+      };
+    } catch (error) {
+      HandleExceptions.check(error);
+    }
   }
 
   async remove(id: string) {
