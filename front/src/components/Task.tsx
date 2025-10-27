@@ -42,11 +42,19 @@ function Task(props: ITask) {
             <h3 className="font-bold">{TASK_NAMES[baseVariant]}</h3>
 
             {isTodoVariant && (
-              <>
-                <p className="text-sm">Task 1</p>
-                <p className="text-sm">Task 2</p>
-                <p className="text-sm">Task 3</p>
-              </>
+              <ul>
+                <li className="text-gray-600 text-lg leading-6">
+                  <small>Task 1</small>
+                </li>
+
+                <li className="text-gray-600 text-lg leading-6">
+                  <small>Task 2</small>
+                </li>
+
+                <li className="text-gray-600 text-lg leading-6">
+                  <small>Task 3</small>
+                </li>
+              </ul>
             )}
           </div>
         </div>
