@@ -3,5 +3,7 @@ packages:
   - front
 
 onlyBuiltDependencies:
+  - '@nestjs/core'
   - '@swc/core'
   - esbuild
+  - unrs-resolver
