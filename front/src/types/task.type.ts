@@ -1,5 +1,6 @@
 export interface ITask {
   variant?: ITaskVariant;
+  onClick?: () => void;
 }
 
 export const DEFAULT_VARIANT = "default";

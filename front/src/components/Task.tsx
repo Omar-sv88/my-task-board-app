@@ -12,7 +12,7 @@ function Task(props: ITask) {
   const baseVariant = props.variant || DEFAULT_VARIANT;
 
   const canShowStatusIcon = ![TODO_VARIANT, DEFAULT_VARIANT].includes(
-    baseVariant,
+    baseVariant
   );
 
   const isDefaultVariant = baseVariant === DEFAULT_VARIANT;
@@ -25,7 +25,8 @@ function Task(props: ITask) {
   return (
     <>
       <section
-        className={`task p-4 flex justify-between rounded-xl ${variant.base}`}
+        className={`task p-4 flex justify-between rounded-xl cursor-pointer ${variant.base}`}
+        onClick={props.onClick}
       >
         <div className="flex gap-4">
           <div
