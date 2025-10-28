@@ -14,7 +14,7 @@ function TaskManager({
   if (!isOpen) return null;
 
   return (
-    <aside className="fixed top-0 right-0 bg-white p-4 shadow-lg w-1/2 max-w-xl h-full z-50">
+    <aside className="fixed top-4 right-4 rounded p-4 shadow-lg w-1/2 max-w-xl h-[calc(100vh-2rem)] z-50 bg-white">
       <header className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold">Task Manager</h2>
         <button
