@@ -78,7 +78,7 @@ function TaskForm() {
         <div className="grid grid-cols-2 gap-4">
           {taskVariants.map((variant) => (
             <div
-              className="flex items-center gap-2 cursor-pointer border border-gray-200 rounded-xl p-2"
+              className="flex items-center gap-2 border border-gray-200 rounded-xl p-2"
               key={variant}
             >
               <div
@@ -87,7 +87,17 @@ function TaskForm() {
                 <img alt={variant} src={TASK_STATUS_ICONS[variant]} />
               </div>
 
-              <label htmlFor="icon">{TASK_NAMES[variant]}</label>
+              <div className="flex items-center justify-between grow gap-2">
+                <label htmlFor="status">{TASK_NAMES[variant]}</label>
+
+                <input
+                  className="appearance-none border-gray-200 checked:bg-blue-500 checked:border-blue-500 border rounded-full p-1"
+                  type="radio"
+                  id="status"
+                  name="status"
+                  value={variant}
+                />
+              </div>
             </div>
           ))}
         </div>
