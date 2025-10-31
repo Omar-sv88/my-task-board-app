@@ -50,35 +50,43 @@ function TaskForm() {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-gray-500" htmlFor="status">
-          Icon
-        </label>
+        <label className="text-xs font-medium text-gray-500">Icon</label>
 
         <div className="flex gap-2">
           {Object.values(TASK_ICONS)
             .filter(Boolean)
             .map((icon) => (
-              <div className="h-12 w-12 flex items-center justify-center rounded-xl border border-gray-200 bg-gray-200">
-                <input type="checkbox" id="icon" name="icon" hidden />
+              <div className="h-12 w-12 flex items-center justify-center rounded-xl border border-gray-200 bg-gray-200 [&:has(input:checked)]:border-amber-200 [&:has(input:checked)]:bg-amber-200">
+                <input
+                  type="radio"
+                  name="icon"
+                  id={`${Object.keys(TASK_ICONS).find(
+                    (key) => TASK_ICONS[key as ITaskVariant] === icon
+                  )}_icon`}
+                  hidden
+                />
 
-                <label htmlFor="icon">{icon}</label>
+                <label
+                  className="cursor-pointer"
+                  name="icon"
+                  htmlFor={`${Object.keys(TASK_ICONS).find(
+                    (key) => TASK_ICONS[key as ITaskVariant] === icon
+                  )}_icon`}
+                >
+                  {icon}
+                </label>
               </div>
             ))}
         </div>
       </div>
 
       <div className="flex flex-col gap-1">
-        <label
-          className="text-xs font-medium text-gray-500"
-          htmlFor="description"
-        >
-          Status
-        </label>
+        <label className="text-xs font-medium text-gray-500">Status</label>
 
         <div className="grid grid-cols-2 gap-4">
           {taskVariants.map((variant) => (
             <div
-              className="flex items-center gap-2 border border-gray-200 rounded-xl p-2"
+              className="flex items-center gap-2 border-2 border-gray-200 rounded-xl p-2 [&:has(input:checked)]:border-blue-500"
               key={variant}
             >
               <div
@@ -88,15 +96,29 @@ function TaskForm() {
               </div>
 
               <div className="flex items-center justify-between grow gap-2">
-                <label htmlFor="status">{TASK_NAMES[variant]}</label>
-
-                <input
-                  className="appearance-none border-gray-200 checked:bg-blue-500 checked:border-blue-500 border rounded-full p-1"
-                  type="radio"
-                  id="status"
+                <label
+                  htmlFor={variant}
                   name="status"
-                  value={variant}
-                />
+                  className="cursor-pointer"
+                >
+                  {TASK_NAMES[variant]}
+                </label>
+
+                <div className="relative flex items-center justify-center">
+                  <input
+                    className="appearance-none border-gray-200 checked:bg-blue-500 checked:border-blue-500 border rounded-full p-2"
+                    type="radio"
+                    id={variant}
+                    name="status"
+                    value={variant}
+                  />
+
+                  <img
+                    src="done.svg"
+                    alt="Check"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4"
+                  />
+                </div>
               </div>
             </div>
           ))}
