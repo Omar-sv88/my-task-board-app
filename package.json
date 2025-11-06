@@ -4,7 +4,9 @@
   "description": "A full-stack task management application developed as part of the [DevChallenges.io](https://devchallenges.io/challenge/my-task-board-app) challenge.",
   "author": "Omar Santos <contacto@omarsantos.dev>",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run:front": "pnpm --filter my-task-board-app-front dev",
+    "run:back": "pnpm --filter my-task-board-app-back start:dev",
+    "dev": "concurrently \"pnpm run:front\" \"pnpm run:back\""
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/Omar-sv88/my-task-board-app#readme",
   "dependencies": {
+    "concurrently": "^9.2.1",
     "my-task-board-app-back": "workspace:*",
     "my-task-board-app-front": "workspace:*"
   }
