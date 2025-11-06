@@ -4,11 +4,14 @@ const API_URL: string = "http://localhost:3000/api";
 
 type TAvailableMethod = "get" | "post" | "patch" | "delete";
 
+export interface APIProps {
+  path?: string;
+  opts?: RequestInit;
+  body?: object;
+}
+
 export type API = {
-  [key in TAvailableMethod]: (
-    path?: string,
-    opts?: RequestInit,
-  ) => Promise<Response | void>;
+  [key in TAvailableMethod]: (props: APIProps) => Promise<Response | void>;
 };
 
 const API_METHOD: { [key in TAvailableMethod]: TAvailableMethod } = {
@@ -20,7 +23,7 @@ const API_METHOD: { [key in TAvailableMethod]: TAvailableMethod } = {
 
 export const useAPI = (basePath?: string) => {
   const service = (path?: string, opts?: RequestInit) =>
-    fetch(`${API_URL}${basePath}${path}`, opts)
+    fetch(`${API_URL}${basePath}${path || ""}`, opts)
       .then((response) => {
         if (response.ok) return response;
 
@@ -35,25 +38,33 @@ export const useAPI = (basePath?: string) => {
       });
 
   const api: API = {
-    get: (path?: string, opts?: RequestInit) =>
+    get: ({ path, opts }) =>
       service(path, {
         ...opts,
         method: API_METHOD.get.toUpperCase(),
       }),
-    post: (path?: string, opts?: RequestInit) =>
+    post: ({ path, opts, body }) =>
       service(path, {
         ...opts,
-        method: API_METHOD.get.toUpperCase(),
+        method: API_METHOD.post.toUpperCase(),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: body && JSON.stringify(body),
       }),
-    patch: (path?: string, opts?: RequestInit) =>
+    patch: ({ path, opts, body }) =>
       service(path, {
         ...opts,
-        method: API_METHOD.get.toUpperCase(),
+        method: API_METHOD.patch.toUpperCase(),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: body && JSON.stringify(body),
       }),
-    delete: (path?: string, opts?: RequestInit) =>
+    delete: ({ path, opts }) =>
       service(path, {
         ...opts,
-        method: API_METHOD.get.toUpperCase(),
+        method: API_METHOD.delete.toUpperCase(),
       }),
   };
 
