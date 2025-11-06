@@ -8,4 +8,7 @@ export class CreateBoardDto {
   @IsString()
   @MinLength(4)
   name: string;
+
+  @IsString()
+  variant: 'to_do' | 'wont_do' | 'completed' | 'in_progress';
 }

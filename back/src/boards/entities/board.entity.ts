@@ -17,6 +17,9 @@ export class Board {
   @Column('text')
   name: string;
 
+  @Column('text')
+  variant: string;
+
   @OneToMany(() => Task, (task) => task.board, {
     cascade: true,
     eager: true,
