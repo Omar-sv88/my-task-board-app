@@ -10,7 +10,7 @@ import {
   TASK_NAMES,
 } from "../data/task.data";
 
-import { SidebarContext } from "../context/sidebarContext";
+import { SidebarContext } from "../context/SidebarContext";
 
 function Task(props: ITask) {
   const { open } = use(SidebarContext);

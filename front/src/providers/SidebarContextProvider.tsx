@@ -2,7 +2,7 @@ import { useState, type PropsWithChildren } from "react";
 
 import type { ITaskVariant } from "../types/task.type";
 
-import { SidebarContext } from "../context/sidebarContext";
+import { SidebarContext } from "../context/SidebarContext";
 
 export const SidebarContextProvider = ({ children }: PropsWithChildren) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

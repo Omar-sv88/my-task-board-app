@@ -2,7 +2,7 @@ import { use } from "react";
 
 import TaskForm from "./TaskForm";
 
-import { SidebarContext } from "../context/sidebarContext";
+import { SidebarContext } from "../context/SidebarContext";
 
 function TaskManager() {
   const { isOpen, close } = use(SidebarContext);
