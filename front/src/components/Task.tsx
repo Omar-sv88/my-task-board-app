@@ -1,3 +1,5 @@
+import { use } from "react";
+
 import type { ITask, TaskClassesByVariantData } from "../types/task.type";
 import { DEFAULT_VARIANT, TODO_VARIANT } from "../types/task.type";
 
@@ -8,11 +10,15 @@ import {
   TASK_NAMES,
 } from "../data/task.data";
 
+import { SidebarContext } from "../context/sidebarContext";
+
 function Task(props: ITask) {
+  const { open } = use(SidebarContext);
+
   const baseVariant = props.variant || DEFAULT_VARIANT;
 
   const canShowStatusIcon = ![TODO_VARIANT, DEFAULT_VARIANT].includes(
-    baseVariant
+    baseVariant,
   );
 
   const isDefaultVariant = baseVariant === DEFAULT_VARIANT;
@@ -26,7 +32,7 @@ function Task(props: ITask) {
     <>
       <section
         className={`task p-4 flex justify-between rounded-xl cursor-pointer ${variant.base}`}
-        onClick={props.onClick}
+        onClick={() => open(baseVariant)}
       >
         <div className="flex gap-4">
           <div

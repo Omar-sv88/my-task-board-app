@@ -1,14 +1,12 @@
-import type { ITaskVariant } from "../types/task.type";
+import { use } from "react";
 
 import TaskForm from "./TaskForm";
 
-interface TaskManagerProps {
-  isOpen: boolean;
-  selectedTaskVariant: ITaskVariant;
-  onClose: () => void;
-}
+import { SidebarContext } from "../context/sidebarContext";
 
-function TaskManager({ isOpen, onClose }: TaskManagerProps) {
+function TaskManager() {
+  const { isOpen, close } = use(SidebarContext);
+
   if (!isOpen) return null;
 
   return (
@@ -19,7 +17,7 @@ function TaskManager({ isOpen, onClose }: TaskManagerProps) {
 
           <button
             className="border border-gray-300 rounded p-1 hover:bg-gray-100 cursor-pointer"
-            onClick={onClose}
+            onClick={close}
           >
             <img src="close_bg_round.svg" alt="Close" />
           </button>

@@ -61,7 +61,7 @@ function TaskForm() {
                   type="radio"
                   name="icon"
                   id={`${Object.keys(TASK_ICONS).find(
-                    (key) => TASK_ICONS[key as ITaskVariant] === icon
+                    (key) => TASK_ICONS[key as ITaskVariant] === icon,
                   )}_icon`}
                   hidden
                 />
@@ -70,7 +70,7 @@ function TaskForm() {
                   className="cursor-pointer"
                   name="icon"
                   htmlFor={`${Object.keys(TASK_ICONS).find(
-                    (key) => TASK_ICONS[key as ITaskVariant] === icon
+                    (key) => TASK_ICONS[key as ITaskVariant] === icon,
                   )}_icon`}
                 >
                   {icon}
