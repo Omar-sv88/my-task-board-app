@@ -6,7 +6,7 @@
   "scripts": {
     "run:front": "pnpm --filter my-task-board-app-front dev",
     "run:back": "pnpm --filter my-task-board-app-back start:dev",
-    "dev": "concurrently \"pnpm run:front\" \"pnpm run:back\""
+    "dev": "concurrently \"pnpm run:back\" \"pnpm wait-on tcp:3000 && pnpm run:front\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "dependencies": {
     "concurrently": "^9.2.1",
     "my-task-board-app-back": "workspace:*",
-    "my-task-board-app-front": "workspace:*"
+    "my-task-board-app-front": "workspace:*",
+    "wait-on": "^9.0.1"
   }
 }

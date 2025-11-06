@@ -1,12 +1,6 @@
-import type { JSX } from "react";
+import type { PropsWithChildren } from "react";
 
-interface IBaseLayout {
-  children: JSX.Element;
-}
-
-function BaseLayout(props: IBaseLayout) {
-  const { children } = props;
-
+function BaseLayout({ children }: PropsWithChildren) {
   return (
     <>
       <section className="base-layout w-full h-full mt-8 flex flex-col items-center justify-center">
