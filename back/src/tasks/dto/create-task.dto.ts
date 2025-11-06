@@ -18,4 +18,8 @@ export class CreateTaskDto {
   @IsString()
   @IsIn(['in_progress', 'completed', 'wont_do'])
   status: string;
+
+  @IsString()
+  @IsOptional()
+  variant: 'to_do' | 'wont_do' | 'completed' | 'in_progress';
 }

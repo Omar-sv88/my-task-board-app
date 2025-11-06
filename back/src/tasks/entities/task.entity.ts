@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 import { Board } from 'src/boards/entities/board.entity';
 
@@ -27,4 +33,14 @@ export class Task {
 
   @Column('text')
   status: string;
+
+  @Column('text')
+  variant: string;
+
+  @BeforeInsert()
+  onBeforeInsert() {
+    if (!this.variant) {
+      this.variant = 'to_do';
+    }
+  }
 }
